@@ -27,26 +27,8 @@ namespace MRLoca
                     this.litMessage.Text = "<h4>Tous</h4>";
                     List<Message> ListeMessages = daoMessage.GetMessageClient(Utilisateur.IdClient);
 
-                    //var ListeGroupe = from liste in ListeMessages
-                                      //group liste by liste.Sujet;
-
-                    var queryLastNames = from liste in ListeMessages
-                                         group liste by liste.Sujet;
-
-                    foreach (var nameGroup in queryLastNames)
-                    {                        
-                        foreach (var newliste in nameGroup)
-                        {
-                            string toto = newliste.Sujet;
-                        }
-                    }
-
-                    //if (ListeGroupe!=null && ListeGroupe.Count() > 0)
-                    //{
-                    //    <Message> Listesujet = (List<Message>)ListeGroupe.ToList();
-                    //}
-                    this.gvwListeMessage.DataSource = ListeMessages;
-                    this.gvwListeMessage.DataBind();
+                    this.lvwMessage.DataSource = ListeMessages;
+                    this.lvwMessage.DataBind();
                 }
             }
             catch(Exception ex)
@@ -70,8 +52,8 @@ namespace MRLoca
                 DaoMessage daoMessage = new DaoMessage();
                 List<Message> TousLesMessages = daoMessage.GetMessageClient(Utilisateur.IdClient);
                 this.litMessage.Text = "<h4>Tous</h4>";
-                this.gvwListeMessage.DataSource = TousLesMessages;
-                this.gvwListeMessage.DataBind();
+                this.lvwMessage.DataSource = TousLesMessages;
+                this.lvwMessage.DataBind();
             }
             catch (Exception ex)
             {
@@ -100,8 +82,8 @@ namespace MRLoca
                     }
                 }
                 this.litMessage.Text = "<h4>Messages Reçus</h4>";
-                this.gvwListeMessage.DataSource = MessagesRecus;
-                this.gvwListeMessage.DataBind();
+                this.lvwMessage.DataSource = MessagesRecus;
+                this.lvwMessage.DataBind();
             }
             catch (Exception ex)
             {
@@ -130,8 +112,8 @@ namespace MRLoca
                     }
                 }
                 this.litMessage.Text = "<h4>Messages Envoyés</h4>";
-                this.gvwListeMessage.DataSource = MessagesEnvoyes;
-                this.gvwListeMessage.DataBind();
+                this.lvwMessage.DataSource = MessagesEnvoyes;
+                this.lvwMessage.DataBind();
             }
             catch (Exception ex)
             {

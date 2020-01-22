@@ -60,12 +60,12 @@ namespace MRLoca
         protected global::System.Web.UI.WebControls.Literal litMessage;
 
         /// <summary>
-        /// Contrôle gvwListeMessage.
+        /// Contrôle lvwMessage.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvwListeMessage;
+        protected global::System.Web.UI.WebControls.ListView lvwMessage;
     }
 }
