@@ -1,0 +1,89 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="backend.master.cs" Inherits="MRLoca.backend" %>
+
+<!DOCTYPE html>
+
+<html lang="fr">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BackEnd : <%: Page.Title %></title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script src="https://kit.fontawesome.com/b868aea368.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="Content/backend.css">
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <%--Bar de navigation avec menu et lien vers les pages suivantes.--%>
+        <asp:Label ID="lblerrormaster" CssClass="bg-danger" runat="server" Text=""></asp:Label>
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+            <a class="navbar-brand" href="BackendEspaceClient.aspx">MRLoca - Espace Client</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <asp:HyperLink CssClass="nav-link" ID="HyperLink1" runat="server" NavigateUrl="~/ListHebergements.aspx">Hebergements</asp:HyperLink>
+                    </li>
+                    <li class="nav-item">
+                        <asp:HyperLink CssClass="nav-link" ID="lnkHebergement" runat="server" NavigateUrl="~/BackendCommandes.aspx">Mes Réservations</asp:HyperLink>
+                    </li>
+                    <li class="nav-item">
+                        <asp:HyperLink CssClass="nav-link" ID="lnkFavoris" runat="server" NavigateUrl="~/Favoris.aspx">Mes Favoris</asp:HyperLink>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <asp:HyperLink CssClass="btn btn-outline-danger" ID="lnkConnect" runat="server" NavigateUrl="~/Reservations.aspx"><i class="fas fa-cart-arrow-down"></i></asp:HyperLink>
+                    <asp:HyperLink CssClass="btn btn-info" ID="lnklogin" runat="server" NavigateUrl="~/connection.aspx">LogIn</asp:HyperLink>
+                    <asp:Button CssClass="btn btn-warning" ID="btnLonout" runat="server" Text="LogOut" OnClick="btnLonout_Click" OnClientClick=" return FireConfirm()"/>
+                </span>                      
+            </div>
+        </nav>
+        <%--Pied de page--%>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - MRLoca</p>
+            </footer>
+        </div>
+    </form>
+
+    <%--Message avant de se deconnecter--%>
+    <script type="text/javascript">
+        function FireConfirm() {
+            if (confirm('Vous êtes sur le point de vous déconnecter. Etes vous sur ? '))
+                return true;
+            else
+                return false;
+        }
+    </script>
+</body>
+</html>

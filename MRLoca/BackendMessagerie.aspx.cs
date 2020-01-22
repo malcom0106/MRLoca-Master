@@ -1,0 +1,181 @@
+﻿using MRLoca.Dao;
+using MRLoca.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace MRLoca
+{
+    public partial class BackendMessagerie : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!IsPostBack)
+                {
+                    Client Utilisateur = null;
+                    if (Session["Client"] != null)
+                    {
+                        Utilisateur = new Client();
+                        Utilisateur = (Client)Session["Client"];
+                    }
+                    DaoMessage daoMessage = new DaoMessage();
+                    this.litMessage.Text = "<h4>Tous</h4>";
+                    List<Message> ListeMessages = daoMessage.GetMessageClient(Utilisateur.IdClient);
+
+                    //var ListeGroupe = from liste in ListeMessages
+                                      //group liste by liste.Sujet;
+
+                    var queryLastNames = from liste in ListeMessages
+                                         group liste by liste.Sujet;
+
+                    foreach (var nameGroup in queryLastNames)
+                    {                        
+                        foreach (var newliste in nameGroup)
+                        {
+                            string toto = newliste.Sujet;
+                        }
+                    }
+
+                    //if (ListeGroupe!=null && ListeGroupe.Count() > 0)
+                    //{
+                    //    <Message> Listesujet = (List<Message>)ListeGroupe.ToList();
+                    //}
+                    this.gvwListeMessage.DataSource = ListeMessages;
+                    this.gvwListeMessage.DataBind();
+                }
+            }
+            catch(Exception ex)
+            {
+                ((backend)Page.Master).AddError(ex);
+            }
+            
+            
+        }
+
+        protected void btn_tous_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Client Utilisateur = null;
+                if (Session["Client"] != null)
+                {
+                    Utilisateur = new Client();
+                    Utilisateur = (Client)Session["Client"];
+                }
+                DaoMessage daoMessage = new DaoMessage();
+                List<Message> TousLesMessages = daoMessage.GetMessageClient(Utilisateur.IdClient);
+                this.litMessage.Text = "<h4>Tous</h4>";
+                this.gvwListeMessage.DataSource = TousLesMessages;
+                this.gvwListeMessage.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ((backend)Page.Master).AddError(ex);
+            }
+            
+        }
+
+        protected void btn_recus_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Client Utilisateur = null;
+                if (Session["Client"] != null)
+                {
+                    Utilisateur = new Client();
+                    Utilisateur = (Client)Session["Client"];
+                }
+                DaoMessage daoMessage = new DaoMessage();
+                List<Message> MessagesRecus = new List<Message>();
+                foreach (Message item in daoMessage.GetMessageClient(Utilisateur.IdClient))
+                {
+                    if (item.IdDestinataire == Utilisateur.IdClient)
+                    {
+                        MessagesRecus.Add(item);
+                    }
+                }
+                this.litMessage.Text = "<h4>Messages Reçus</h4>";
+                this.gvwListeMessage.DataSource = MessagesRecus;
+                this.gvwListeMessage.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ((backend)Page.Master).AddError(ex);
+            }
+            
+        }
+
+        protected void btn_envoyes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Client Utilisateur = null;
+                if (Session["Client"] != null)
+                {
+                    Utilisateur = new Client();
+                    Utilisateur = (Client)Session["Client"];
+                }
+                DaoMessage daoMessage = new DaoMessage();
+                List<Message> MessagesEnvoyes = new List<Message>();
+                foreach (Message item in daoMessage.GetMessageClient(Utilisateur.IdClient))
+                {
+                    if (item.IdExpediteur == Utilisateur.IdClient)
+                    {
+                        MessagesEnvoyes.Add(item);
+                    }
+                }
+                this.litMessage.Text = "<h4>Messages Envoyés</h4>";
+                this.gvwListeMessage.DataSource = MessagesEnvoyes;
+                this.gvwListeMessage.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ((backend)Page.Master).AddError(ex);
+            }
+            
+        }
+
+        protected void btnEnvoi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Client Utilisateur = null;
+                if (Session["Client"] != null)
+                {
+                    Utilisateur = new Client();
+                    Utilisateur = (Client)Session["Client"];
+                }
+                int arg1 = Convert.ToInt32(((Button)sender).CommandArgument);
+                int arg2 = Convert.ToInt32(((Button)sender).CommandName);
+                if (arg1 == Utilisateur.IdClient)
+                {
+                    Response.Redirect("BackendNouveauMessage.aspx?idDestinataire=" + arg2);
+                }
+                else if (arg2 == Utilisateur.IdClient)
+                {
+                    Response.Redirect("BackendNouveauMessage.aspx?idDestinataire=" + arg1);
+                }
+                else
+                {
+                    Response.Redirect("BackendEspaceClient.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                ((backend)Page.Master).AddError(ex);
+            }
+            
+
+        }
+
+        protected void btnSupprime_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
