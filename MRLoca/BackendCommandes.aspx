@@ -2,23 +2,31 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3>Espace Client<em class="lead"> - Mes Réservations</em></h3>
     <figure class="figure bg-white py-2 col-12 border shadow my-3 bg-white rounded">
-        <asp:ListView ID="lvwHebergement" runat="server">
-            <ItemTemplate>                
-                <div class="d-flex col-12 border shadow p-3 mb-3 bg-white rounded">                    
-                    <div class="col-9 text-left">
-                        <div class="">
-                            <div class="p-2 bd-highlight text-left">
-                                Commande num. : <%# Eval("IdReservation") %>
+        <div class="card-deck col-12">
+            <asp:ListView ID="lvwHebergement" runat="server">
+                <ItemTemplate>
+                    <div class="col-sm-12 col-md-12 col-lg-6">
+                        <div class="card">
+                            <img class="card-img-top" src='<%# Eval("Location.Photo") %>' alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title"><%# Eval("Location.Nom") %></h5>
+                                <p class="card-text"><%# Eval("Location.Description") %></p>                            
                             </div>
-                            <div><%# Eval("Location.Nom") %></div>
-                            <div class="p-2 bd-highlight">Date : <%# Eval("DateDebut") %> au <%# Eval("DateFin") %></div>
-                            <%--<div class="p-2 bd-highlight"><%# Eval("Prix") %> Eur/Sem.</div>--%>                        
-                            <div id="btns" class="mt-auto p-2 bd-highlight">                            
+                            <div class="card-footer">
+                                <small class="text-muted">
+                                    <p>Du <%#String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("fr-FR"),"{0:ddd d MMM yyy}",Eval("DateDebut")) %> </p>
+                                    <p>au <%#String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("fr-FR"),"{0:ddd d MMM yyy}",Eval("DateDebut")) %> </p>
+                                </small>
                             </div>
-                        </div>
-                    </div>                    
-                </div>                               
-        </ItemTemplate>
-        </asp:ListView>
+                            <div class="text-center">
+                                <asp:Button ID="btnAnnuler" CssClass="btn btn-danger" CommandArgument='<%# Eval("IdReservation") %>' runat="server" Text="Annuler" OnClick="btnAnnuler_Click"/>
+                                <asp:Button ID="btnContact" CssClass="btn btn-primary" CommandArgument='<%# Eval("Location.IdHebergement") %>' runat="server" Text="Contact" OnClick="btnContact_Click" />
+                                <asp:Button ID="btnAvis" CssClass="btn btn-warning" CommandArgument='<%# Eval("Location.IdHebergement") %>' runat="server" Text="Ajouter Avis" OnClick="btnAvis_Click" />
+                            </div>
+                        </div>    
+                    </div>                                           
+                </ItemTemplate>
+            </asp:ListView>
+        </div>
     </figure>
 </asp:Content>

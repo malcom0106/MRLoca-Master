@@ -7,6 +7,7 @@ namespace MRLoca.Entities
 {
     public class Reservation
     {
+        public int IdReservation { set; get; }
         public int IdClient { set; get; }
         public int IdHebergement { set; get; }
         public DateTime DateReservation { set; get; }

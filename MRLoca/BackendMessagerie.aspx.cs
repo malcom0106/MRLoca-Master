@@ -50,9 +50,8 @@ namespace MRLoca
                     Utilisateur = (Client)Session["Client"];
                 }
                 DaoMessage daoMessage = new DaoMessage();
-                List<Message> TousLesMessages = daoMessage.GetMessageClient(Utilisateur.IdClient);
                 this.litMessage.Text = "<h4>Tous</h4>";
-                this.lvwMessage.DataSource = TousLesMessages;
+                this.lvwMessage.DataSource = daoMessage.GetMessageClient(Utilisateur.IdClient);
                 this.lvwMessage.DataBind();
             }
             catch (Exception ex)
@@ -155,9 +154,21 @@ namespace MRLoca
 
         }
 
-        protected void btnSupprime_Click(object sender, EventArgs e)
+        protected void lvwMessage_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
         {
+            Client Utilisateur = null;
+            if (Session["Client"] != null)
+            {
+                Utilisateur = new Client();
+                Utilisateur = (Client)Session["Client"];
+            }
+            this.DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+            DaoMessage daoMessage = new DaoMessage();
+            this.litMessage.Text = "<h4>Tous</h4>";
+            List<Message> ListeMessages = daoMessage.GetMessageClient(Utilisateur.IdClient);
 
+            this.lvwMessage.DataSource = ListeMessages;
+            this.lvwMessage.DataBind();
         }
     }
 }

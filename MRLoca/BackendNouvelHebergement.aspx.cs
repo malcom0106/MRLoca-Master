@@ -17,7 +17,7 @@ namespace MRLoca
         protected void Page_Load(object sender, EventArgs e)
         {
             DaoDataDDL daoDataDDL = new DaoDataDDL();
-            this.ddlType = Functions.GenerationDDL(this.ddlType, daoDataDDL.GetDataDDL("IdTypeLgt", "NomLgt", "TypeLgt", null, null));
+            this.ddlType = Functions.GenerationDDL(this.ddlType, daoDataDDL.GetDataDDL("IdTypeHebergement", "NomHebergement", "TypeHebergement", null, null));
             this.ddlType.DataBind();
         }
 

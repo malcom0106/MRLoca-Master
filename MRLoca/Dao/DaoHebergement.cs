@@ -1,4 +1,5 @@
 ﻿using MRLoca.Entities;
+using MRLoca.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -183,10 +184,11 @@ namespace MRLoca.Dao
                 hebergement.IdHebergement = Convert.ToInt32(base.sqlDataReader["IdHebergement"]);
                 hebergement.Nom = base.sqlDataReader["Nom"].ToString();
                 hebergement.Description = base.sqlDataReader["Description"].ToString();
-                hebergement.Photo = base.sqlDataReader["Photo"].ToString();
-                hebergement.Type = base.sqlDataReader["Nom"].ToString();
+                hebergement.Photo = Constants.CheminPhoto+base.sqlDataReader["NomPhoto"].ToString();
+                hebergement.Type = base.sqlDataReader["NomHebergement"].ToString();
                 hebergement.IdClient = Convert.ToInt32(base.sqlDataReader["IdClient"]);
                 hebergement.IdAdresse = Convert.ToInt32(base.sqlDataReader["IdAdresse"]);
+                hebergement.PrixDeBase = Convert.ToInt32(base.sqlDataReader["PrixDeBase"]);
 
                 //Gestion de l'ajout de l'adresse dans l hebergement
                 int IdAdresse = Convert.ToInt32(base.sqlDataReader["IdAdresse"]);

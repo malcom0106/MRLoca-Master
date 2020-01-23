@@ -1,5 +1,6 @@
 ﻿using MRLoca.Dao;
 using MRLoca.Entities;
+using MRLoca.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace MRLoca
                             Adresse AdresseLgt = MaSelection.Adresse;
 
                             this.lblAdresse.Text = AdresseLgt.Numero + " " + AdresseLgt.Voie + "<br />" + AdresseLgt.CodePostal + " " + AdresseLgt.Ville;
-                            //this.lblPrix.Text = Convert.ToString(MaSelection.Prix);
+                            this.lblPrix.Text = Convert.ToString(MaSelection.PrixDeBase);
                             this.btnFavori.CommandArgument = Convert.ToString(MaSelection.IdHebergement);
                             this.btnReserve.CommandArgument = Convert.ToString(MaSelection.IdHebergement);
                         }

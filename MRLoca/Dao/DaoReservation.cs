@@ -67,13 +67,13 @@ namespace MRLoca.Dao
                         DateTime DateFin = Convert.ToDateTime(base.sqlDataReader["DateFin"]);
                         string PrixTotal = Convert.ToString(base.sqlDataReader["PrixTotal"]);
                         bool Statut = Convert.ToBoolean(base.sqlDataReader["Statut"]);
-                        int ModePaiement = Convert.ToInt32(base.sqlDataReader["ModePaiement"]);
+                        int ModePaiement = Convert.ToInt32(base.sqlDataReader["IdPaiement"]);
                         Hebergement Location = new Hebergement();
                         Location.IdHebergement = Convert.ToInt32(base.sqlDataReader["IdHebergement"]);
                         Location.Nom = Convert.ToString(base.sqlDataReader["Nom"]);
-                        Location.Photo = Convert.ToString(base.sqlDataReader["Photo"]);
+                        Location.Photo =Constants.CheminPhoto+Convert.ToString(base.sqlDataReader["NomPhoto"]);
                         Location.Nom = Convert.ToString(base.sqlDataReader["Nom"]);
-                        Location.Type = null;
+                        Location.Type = Convert.ToString(base.sqlDataReader["NomHebergement"]);
                         Location.Description = Convert.ToString(base.sqlDataReader["Description"]);
 
                         Commande maCommande = new Commande(IdReservation, Locataire, Location, DateDebut, DateFin, PrixTotal, Statut, ModePaiement);

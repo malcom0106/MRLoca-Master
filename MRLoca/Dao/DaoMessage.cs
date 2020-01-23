@@ -61,8 +61,6 @@ namespace MRLoca.Dao
                         hebergement.Photo = Convert.ToString(base.sqlDataReader["Photo"]);
                         hebergement.Type = Convert.ToString(base.sqlDataReader["Type"]);
 
-
-
                         Message monMessage = new Message(IdMessagerie, IdExpediteur, IdDestinataire, LeMessage, DateMessage, Statut, Expediteur, Destinataire, hebergement, sujet);
 
                         ListeMessages.Add(monMessage);

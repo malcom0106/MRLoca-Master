@@ -30,7 +30,7 @@ namespace MRLoca
                     this.ddlDepartement = Functions.GenerationDDL(this.ddlDepartement, dataDDL.GetDataDDL("Departement_code", "Departement_nom_uppercase", "Departement", null, null));
                     this.ddlDepartement.DataBind();
 
-                    this.ddlType = Functions.GenerationDDL(this.ddlType, dataDDL.GetDataDDL("IdTypeLgt", "NomLgt", "TypeLgt", null, null));
+                    this.ddlType = Functions.GenerationDDL(this.ddlType, dataDDL.GetDataDDL("IdTypeHebergement", "NomHebergement", "TypeHebergement", null, null));
                     this.ddlType.DataBind();
                 }
             }

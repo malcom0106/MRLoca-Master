@@ -30,5 +30,20 @@ namespace MRLoca
             }
             
         }
+
+        protected void btnContact_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAnnuler_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAvis_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

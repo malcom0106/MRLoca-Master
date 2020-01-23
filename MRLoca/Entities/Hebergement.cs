@@ -14,6 +14,7 @@ namespace MRLoca.Entities
         public string Description { set; get; }
         public int IdClient { set; get; }
         public int IdAdresse { set; get; }
+        public decimal PrixDeBase { set; get; }
         public Adresse Adresse { set; get; }
         public Client Proprietaire { get; set; }
 
