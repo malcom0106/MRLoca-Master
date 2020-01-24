@@ -21,10 +21,10 @@ namespace MRLoca
                     Utilisateur = (Client)Session["Client"];
                 }
                 DaoReservation daoreservation = new DaoReservation();
-
-                if (daoreservation.GetCommande(Utilisateur.IdClient).Count > 0)
+                List<Commande> MesCommandes = daoreservation.GetCommande(Utilisateur.IdClient);
+                if (MesCommandes.Count() > 0)
                 {
-                    this.lvwHebergement.DataSource = daoreservation.GetCommande(Utilisateur.IdClient);
+                    this.lvwHebergement.DataSource = MesCommandes;
                     this.lvwHebergement.DataBind();
                 }
                 else

@@ -16,7 +16,7 @@ namespace MRLoca.Dao
         }
         public void SetReservation(int idclient, int idhebergement, DateTime datedebut, DateTime datefin, string prix, bool statut, int Paiement)
         {
-
+            decimal prixTotal = Convert.ToDecimal(prix);
             try
             {
                 String sql = "sp_SetReservation";
@@ -25,11 +25,11 @@ namespace MRLoca.Dao
                 List<SqlParameter> sqlParameters = new List<SqlParameter>();
 
                 //Creation d'un parametre SQL et ajout dans le tableau precedemment créé
-                sqlParameters.Add(new SqlParameter("@Idlient", idclient));
+                sqlParameters.Add(new SqlParameter("@IdClient", idclient));
                 sqlParameters.Add(new SqlParameter("@IdHebergement", idhebergement));
                 sqlParameters.Add(new SqlParameter("@DateDebut", datedebut));
                 sqlParameters.Add(new SqlParameter("@DateFin", datefin));
-                sqlParameters.Add(new SqlParameter("@PrixTotal", prix));
+                sqlParameters.Add(new SqlParameter("@PrixTotal", prixTotal));
                 sqlParameters.Add(new SqlParameter("@Statut", statut));
                 sqlParameters.Add(new SqlParameter("@ModePaiement", Paiement));
 

@@ -23,7 +23,7 @@
                             <asp:LinkButton ID="lbtDetail" runat="server" CommandArgument='<%# Eval("IdHebergement") %>' OnClick="lbtDetail_Click"><%# Eval("Nom") %></asp:LinkButton>
                         </div>
                         <div class="p-2 bd-highlight"><%# Eval("Description") %></div>
-                        <%--<div class="p-2 bd-highlight"><%# Eval("Prix") %> Eur/Sem.</div>--%>                        
+                        <div class="p-2 bd-highlight"><%# String.Format("{0:f2}", Eval("PrixDeBase"))%> Eur/Jour</div>                
                         <div id="btns" class="mt-auto p-2 bd-highlight">
                             <asp:Button CssClass="btn btn-success" ID="btnFavori" runat="server" Text="Favori" CommandArgument='<%# Eval("IdHebergement") %>' OnClick="btnFavori_Click" />
                             <asp:Button CssClass="btn btn-primary" ID="btnreserve" runat="server" Text="Reservé" CommandArgument='<%# Eval("IdHebergement") %>' OnClick="btnreserve_Click"/>

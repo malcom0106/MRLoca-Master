@@ -35,9 +35,11 @@ namespace MRLoca
                             this.lblTitre.Text = MaSelection.Nom;
                             this.lblDescription.Text = MaSelection.Description;
                             Adresse AdresseLgt = MaSelection.Adresse;
-
-                            this.lblAdresse.Text = AdresseLgt.Numero + " " + AdresseLgt.Voie + "<br />" + AdresseLgt.CodePostal + " " + AdresseLgt.Ville;
-                            this.lblPrix.Text = Convert.ToString(MaSelection.PrixDeBase);
+                            if (AdresseLgt != null)
+                            {
+                                this.lblAdresse.Text = AdresseLgt.Numero + " " + AdresseLgt.Voie + "<br />" + AdresseLgt.CodePostal + " " + AdresseLgt.Ville;
+                            }
+                            this.lblPrix.Text = String.Format("{0:N2}", MaSelection.PrixDeBase);
                             this.btnFavori.CommandArgument = Convert.ToString(MaSelection.IdHebergement);
                             this.btnReserve.CommandArgument = Convert.ToString(MaSelection.IdHebergement);
                         }

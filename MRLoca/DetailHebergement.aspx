@@ -20,7 +20,7 @@
         <div class="border rounded border-info col-3 py-auto ">
             <div class="col-12 text-center py-3">            
                 <p>
-                    <strong><asp:Label ID="lblPrix" runat="server" Text=""></asp:Label></strong> Eur/Sem.
+                    <strong><asp:Label ID="lblPrix" runat="server" Text=""></asp:Label></strong> Eur/jour
                 </p>                
             </div>
             <div class="col-12 pb-1">                

@@ -162,11 +162,11 @@ namespace MRLoca
             {
                 int Id = Convert.ToInt32(((Button)sender).CommandArgument);
                 Session["Reservation"] = Id;
-                Response.Redirect("Reservations.aspx");
+                Response.Redirect("Reservations.aspx",false) ;
             }
             catch (Exception ex)
             {
-                ((SiteMaster)Page.Master).AddError(ex);
+                Functions.AddError(ex);
             }            
         }
      

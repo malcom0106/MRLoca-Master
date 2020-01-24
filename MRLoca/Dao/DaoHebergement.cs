@@ -199,7 +199,7 @@ namespace MRLoca.Dao
                 }
 
 
-                hebergement.PrixDeBase = Convert.ToInt32(base.sqlDataReader["PrixDeBase"]);
+                hebergement.PrixDeBase = Convert.ToDecimal(base.sqlDataReader["PrixDeBase"]);
 
                 if(Convert.ToString(base.sqlDataReader["IdAdresse"]) != "" && Convert.ToString(base.sqlDataReader["NomAdresse"]) != "")
                 {
