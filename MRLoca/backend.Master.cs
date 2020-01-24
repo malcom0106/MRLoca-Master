@@ -27,6 +27,7 @@ namespace MRLoca
             else
             {
                 Utilisateur = (Client)Session["Client"];
+                this.lblClient.Text = "Bonjour, " + Utilisateur.Nom + " " + Utilisateur.Prenom+' ';
                 this.lnklogin.Visible = false;
                 this.btnLonout.Visible = true;
             }

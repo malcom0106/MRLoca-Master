@@ -8,10 +8,11 @@
                 <ItemTemplate>
                     <div class="col-sm-12 col-md-12 col-lg-6">
                         <div class="card">
-                            <img class="card-img-top" src='<%# Eval("Location.Photo") %>' alt="Card image cap">
+                            <asp:Image ID="imgLogement" CssClass="card-img-top image-fluid" runat="server" AlternateText="Card image cap" ImageUrl='<%# Eval("Location.Photo") %>' Height="200" />
                             <div class="card-body">
                                 <h5 class="card-title"><%# Eval("Location.Nom") %></h5>
-                                <p class="card-text"><%# Eval("Location.Description") %></p>                            
+                                <p class="card-text"><%# Eval("Location.Description") %></p> 
+                                <p class="card-text">Prix Total : <%# Eval("PrixTotal") %> Eur.</p> 
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">

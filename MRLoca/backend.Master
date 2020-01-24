@@ -59,6 +59,9 @@
                     </li>
                 </ul>
                 <span class="navbar-text">
+                    <asp:Label ID="lblClient" runat="server" Text=""></asp:Label>
+                </span>
+                <span class="navbar-text">                    
                     <asp:HyperLink CssClass="btn btn-outline-danger" ID="lnkConnect" runat="server" NavigateUrl="~/Reservations.aspx"><i class="fas fa-cart-arrow-down"></i></asp:HyperLink>
                     <asp:HyperLink CssClass="btn btn-outline-success" ID="lnklogin" runat="server" NavigateUrl="~/connection.aspx">LogIn</asp:HyperLink>
                     <asp:Button CssClass="btn btn-outline-warning" ID="btnLonout" runat="server" Text="LogOut" OnClick="btnLonout_Click" OnClientClick=" return FireConfirm()"/>
