@@ -1,5 +1,6 @@
 ﻿using MRLoca.Dao;
 using MRLoca.Entities;
+using MRLoca.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -151,7 +152,7 @@ namespace MRLoca
             }
             catch (Exception ex)
             {
-                ((SiteMaster)Page.Master).AddError(ex);
+                Functions.AddError(ex);
             }
         }
 

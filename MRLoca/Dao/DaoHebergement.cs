@@ -184,35 +184,51 @@ namespace MRLoca.Dao
                 hebergement.IdHebergement = Convert.ToInt32(base.sqlDataReader["IdHebergement"]);
                 hebergement.Nom = base.sqlDataReader["Nom"].ToString();
                 hebergement.Description = base.sqlDataReader["Description"].ToString();
-                hebergement.Photo = Constants.CheminPhoto+base.sqlDataReader["NomPhoto"].ToString();
+
+                if (base.sqlDataReader["NomPhoto"].ToString() != null && base.sqlDataReader["NomPhoto"].ToString() != "") 
+                {
+                    hebergement.Photo = Constants.CheminPhoto + base.sqlDataReader["NomPhoto"].ToString();
+                }
+
                 hebergement.Type = base.sqlDataReader["NomHebergement"].ToString();
-                hebergement.IdClient = Convert.ToInt32(base.sqlDataReader["IdClient"]);
-                hebergement.IdAdresse = Convert.ToInt32(base.sqlDataReader["IdAdresse"]);
+
+                
+                if (base.sqlDataReader["IdClient"].ToString() != null && base.sqlDataReader["IdClient"].ToString() != "")
+                {
+                    hebergement.IdClient = Convert.ToInt32(base.sqlDataReader["IdClient"]);
+                }
+
+
                 hebergement.PrixDeBase = Convert.ToInt32(base.sqlDataReader["PrixDeBase"]);
 
-                //Gestion de l'ajout de l'adresse dans l hebergement
-                int IdAdresse = Convert.ToInt32(base.sqlDataReader["IdAdresse"]);
-                string NomAdresse = base.sqlDataReader["NomAdresse"].ToString();
-                string Numero = base.sqlDataReader["Numero"].ToString();
-                string Voie = base.sqlDataReader["Voie"].ToString();
-                string CodePostal = base.sqlDataReader["CodePostal"].ToString();
-                string Ville = base.sqlDataReader["Ville"].ToString();
-                Adresse AdresseHebergement = new Adresse(IdAdresse, NomAdresse, Numero, Voie, CodePostal, Ville);
-                hebergement.Adresse = AdresseHebergement;
-
-                //Gestion de l'ajout du proprio dans l'hebergement
-                int IdProprio = Convert.ToInt32(base.sqlDataReader["IdClient"]);
-                string Nom = base.sqlDataReader["NomProprietaire"].ToString();
-                string Prenom = base.sqlDataReader["Prenom"].ToString();
-                string Email = base.sqlDataReader["Email"].ToString();
-                string Telephone = base.sqlDataReader["Telephone"].ToString();
-                Client Proprietaire = new Client();
-                Proprietaire.IdClient = IdProprio;
-                Proprietaire.Nom = Nom;
-                Proprietaire.Prenom = Prenom;
-                Proprietaire.Email = Email;
-                Proprietaire.Telephone = Telephone;
-                hebergement.Proprietaire = Proprietaire;
+                if(Convert.ToString(base.sqlDataReader["IdAdresse"]) != "" && Convert.ToString(base.sqlDataReader["NomAdresse"]) != "")
+                {
+                    //Gestion de l'ajout de l'adresse dans l hebergement
+                    int IdAdresse = Convert.ToInt32(base.sqlDataReader["IdAdresse"]);
+                    string NomAdresse = base.sqlDataReader["NomAdresse"].ToString();
+                    string Numero = base.sqlDataReader["Numero"].ToString();
+                    string Voie = base.sqlDataReader["Voie"].ToString();
+                    string CodePostal = base.sqlDataReader["CodePostal"].ToString();
+                    string Ville = base.sqlDataReader["Ville"].ToString();
+                    Adresse AdresseHebergement = new Adresse(IdAdresse, NomAdresse, Numero, Voie, CodePostal, Ville);
+                    hebergement.Adresse = AdresseHebergement;
+                }
+                if (Convert.ToString(base.sqlDataReader["IdClient"]) != null && Convert.ToString(base.sqlDataReader["IdClient"]) != "" && base.sqlDataReader["NomProprietaire"].ToString()!="")
+                {
+                    //Gestion de l'ajout du proprio dans l'hebergement
+                    int IdProprio = Convert.ToInt32(base.sqlDataReader["IdClient"]);
+                    string Nom = base.sqlDataReader["NomProprietaire"].ToString();
+                    string Prenom = base.sqlDataReader["Prenom"].ToString();
+                    string Email = base.sqlDataReader["Email"].ToString();
+                    string Telephone = base.sqlDataReader["Telephone"].ToString();
+                    Client Proprietaire = new Client();
+                    Proprietaire.IdClient = IdProprio;
+                    Proprietaire.Nom = Nom;
+                    Proprietaire.Prenom = Prenom;
+                    Proprietaire.Email = Email;
+                    Proprietaire.Telephone = Telephone;
+                    hebergement.Proprietaire = Proprietaire;
+                }                  
 
                 return hebergement;
             }

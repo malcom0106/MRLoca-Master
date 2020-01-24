@@ -45,24 +45,26 @@ namespace MRLoca
             List<Hebergement> listeHasardeuse = new List<Hebergement>();
             try
             {
+
                 List<Hebergement> listeHebergement = new List<Hebergement>();
                 listeHebergement = (List<Hebergement>)Session["ListeHebergement"];
-                
-                Random rnd = new Random();
-                List<int> listeInt = new List<int>();
-                for (int i = 0; i <= NbrHebergement - 1; i++)
+                if(listeHebergement!= null && listeHebergement.Count() > 0)
                 {
-                    int id = rnd.Next(1, listeHebergement.Count());
-                    while (listeInt.Contains(id))
+                    Random rnd = new Random();
+                    List<int> listeInt = new List<int>();
+                    for (int i = 0; i <= NbrHebergement - 1; i++)
                     {
-                        id = rnd.Next(0, listeHebergement.Count());
+                        int id = rnd.Next(1, listeHebergement.Count());
+                        while (listeInt.Contains(id))
+                        {
+                            id = rnd.Next(0, listeHebergement.Count());
+                        }
+                        listeInt.Add(id);
+                        Hebergement lgt = listeHebergement[id];
+                        listeHasardeuse.Add(lgt);
                     }
-                    listeInt.Add(id);
-                    Hebergement lgt = listeHebergement[id];
-                    listeHasardeuse.Add(lgt);
-                }
-                listeInt.Clear();
-                
+                    listeInt.Clear();
+                }                
             }
             catch (Exception ex)
             {
