@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/backend.Master" AutoEventWireup="true" CodeBehind="BackendCommandes.aspx.cs" Inherits="MRLoca.BackendCommandes" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
     <h3>Espace Client<em class="lead"> - Mes Réservations</em></h3>
     <figure class="figure bg-white py-2 col-12 border shadow my-3 bg-white rounded">
         <div class="card-deck col-12">
@@ -28,5 +29,15 @@
                 </ItemTemplate>
             </asp:ListView>
         </div>
+    
+        <asp:Panel ID="pnlModal" runat="server" Visible="false">
+            <div class="jumbotron">
+                <h1 class="display-3 text-center">Liste Vide ! </h1>
+                <p class="lead text-center">
+                    Vous n'avez pas encore commander sur notre plateforme de reservation.<br />
+                    <asp:HyperLink ID="lnkHebergement" runat="server" NavigateUrl="ListHebergements.aspx">Cliquez ici</asp:HyperLink> pour vous voir l'ensemble de nos bien en location.
+                </p>          
+            </div>
+        </asp:Panel>
     </figure>
 </asp:Content>

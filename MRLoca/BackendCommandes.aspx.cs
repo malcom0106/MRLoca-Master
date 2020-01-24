@@ -21,8 +21,16 @@ namespace MRLoca
                     Utilisateur = (Client)Session["Client"];
                 }
                 DaoReservation daoreservation = new DaoReservation();
-                this.lvwHebergement.DataSource = daoreservation.GetCommande(Utilisateur.IdClient);
-                this.lvwHebergement.DataBind();
+
+                if (daoreservation.GetCommande(Utilisateur.IdClient).Count > 0)
+                {
+                    this.lvwHebergement.DataSource = daoreservation.GetCommande(Utilisateur.IdClient);
+                    this.lvwHebergement.DataBind();
+                }
+                else
+                {
+                    this.pnlModal.Visible = true;
+                }
             }
             catch (Exception ex) 
             {
