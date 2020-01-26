@@ -56,7 +56,29 @@ namespace MRLoca
 
         protected void btnEnvoyer_Click(object sender, EventArgs e)
         {
+            try
+            {
+                //Recuperation des variables.
+                string Message = this.txtmessage.Text;
+                string Sujet = this.txtSujet.Text;
+                int IdDestinataire = Convert.ToInt32(this.hidDestinataire.Value);
+                int IdHebergement = Convert.ToInt32(this.hidHebergement.Value);
+                Client Utilisateur = null;
+                if (Session["Client"] != null)
+                {
+                    Utilisateur = (Client)Session["Client"];
+                }
+                int IdExpediteur = Utilisateur.IdClient;
 
+                // Variables stockées en BDD
+                DaoMessage daoMessage = new DaoMessage();
+                daoMessage.InsertMessage(IdExpediteur, IdDestinataire, Sujet, Message, IdHebergement);
+                Response.Redirect("BackendMessagerie.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                ((backend)Page.Master).AddError(ex);
+            }
         }
     }
 }
