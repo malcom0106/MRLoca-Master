@@ -47,8 +47,12 @@ namespace MRLoca
                             DaoAvis daoavis = new DaoAvis();
                             List<Avis> listeAvis = daoavis.GetAvisHebergement(IdHebergement);
                             if (listeAvis.Count() > 0)
-                            {
+                            {                                
+                                double note = Math.Round(((from n in listeAvis
+                                            select n.Note).Average()),1);
+                                this.litNoteGlobale.Text = note.ToString();
                                 this.panAvis.Visible = true;
+                                this.litNbreAvis.Text = Convert.ToString(listeAvis.Count());
                                 this.lvwAvis.DataSource = listeAvis;
                                 this.lvwAvis.DataBind();
                             }

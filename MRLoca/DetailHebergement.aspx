@@ -16,24 +16,25 @@
                 <h6>Adresse : </h6>
                 <asp:Label ID="lblAdresse" runat="server" Text=""></asp:Label>
             </div>
-            <asp:Panel ID="panAvis" CssClass="card" runat="server">
-                <div class="card-header" id="headingOne">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Voir les Avis :
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <asp:Panel ID="panAvis" runat="server">
+                <hr />
+                <p>
+                    Note globale : <asp:Literal ID="litNoteGlobale" runat="server"></asp:Literal>
+                </p>                
+                <h6>
+                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseAvis" role="button" aria-expanded="false" aria-controls="collapseAvis">
+                        Voir les Avis <span class="badge badge-light"><asp:Literal ID="litNbreAvis" runat="server"></asp:Literal></span> :
+                    </a>
+                </h6>
+                <div class="collapse" id="collapseAvis">                
                     <asp:ListView ID="lvwAvis" runat="server">
-                        <ItemTemplate>
-                            <div class="card-body">
-                                <div>Note : <%# Eval("Note"); %></div>
-                                <div><%# Eval("Commentaire"); %></div>
+                        <ItemTemplate>   
+                            <div class="card card-body">
+                                <div>Note : <%# Eval("Note") %> /5</div>
+                                <div><%# Eval("Commentaire") %></div> 
                             </div>
-                        </ItemTemplate>
+                        </ItemTemplate>                    
                     </asp:ListView>
-                    
                 </div>
             </asp:Panel>            
         </div>
