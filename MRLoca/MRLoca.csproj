@@ -412,6 +412,7 @@
       <DependentUpon>CreerCompte.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dao\DaoAdresse.cs" />
+    <Compile Include="Dao\DaoAvis.cs" />
     <Compile Include="Dao\DaoClient.cs" />
     <Compile Include="Dao\DaoDataDDL.cs" />
     <Compile Include="Dao\DaoFavori.cs" />
@@ -442,6 +443,7 @@
       <DependentUpon>DetailHebergement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entities\Adresse.cs" />
+    <Compile Include="Entities\Avis.cs" />
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\Commande.cs" />
     <Compile Include="Entities\DataDDL.cs" />
