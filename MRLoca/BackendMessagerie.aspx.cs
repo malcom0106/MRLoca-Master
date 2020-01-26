@@ -141,9 +141,9 @@ namespace MRLoca
             try
             {
                 string Message = this.txtmessage.Text;
-                string Sujet = this.txtSujet.Text;
-                int IdDestinataire = Convert.ToInt32(this.txtdestinataire.Text);
-                int IdHebergement = Convert.ToInt32(this.txthebergement.Text);
+                string Sujet = this.hidSujet.Value;
+                int IdDestinataire = Convert.ToInt32(this.hidDestinataire.Value);
+                int IdHebergement = Convert.ToInt32(this.hidHebergement.Value);
                 Client Utilisateur = null;                
                 if (Session["Client"] != null)
                 {

@@ -66,10 +66,9 @@
             </button>
           </div>
           <div class="modal-body col-12 ">
-                  <asp:TextBox ID="txtdestinataire" runat="server" Visible=""></asp:TextBox>
-                  <asp:TextBox ID="txthebergement" runat="server" Visible=""></asp:TextBox>              
-                  <asp:TextBox CssClass="form-control col-12" ID="txtSujet" runat="server" Visible=""></asp:TextBox>
-
+              <asp:HiddenField ID="hidDestinataire" runat="server" />
+              <asp:HiddenField ID="hidHebergement" runat="server" />
+              <asp:HiddenField ID="hidSujet" runat="server" />
               <div class="form-group">
                 <label for="message-text" class="col-form-label">Message:</label>
                   <asp:TextBox CssClass="form-control col-12" ID="txtmessage" runat="server" TextMode="MultiLine" Rows="10"></asp:TextBox>
@@ -85,11 +84,10 @@
     <script type="text/javascript">
         function envoisMessage(dest,sujet,heb) {
             $('#ModalRepondre').modal('show');
-            var txtsujet = '#<%=this.txtSujet.ClientID %>';            
-            var txtdes = '#<%=this.txtdestinataire.ClientID %>';
-            var txtheberg = '#<%=this.txthebergement.ClientID %>';
+            var txtsujet = '#<%=this.hidSujet.ClientID %>';            
+            var txtdes = '#<%=this.hidDestinataire.ClientID %>';
+            var txtheberg = '#<%=this.hidHebergement.ClientID %>';
             $(txtsujet).val(sujet);
-
             $(txtdes).val(dest);
             $(txtheberg).val(heb);
         }

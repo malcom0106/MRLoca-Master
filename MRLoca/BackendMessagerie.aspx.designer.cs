@@ -78,31 +78,31 @@ namespace MRLoca
         protected global::System.Web.UI.WebControls.DataPager DataPager1;
 
         /// <summary>
-        /// Contrôle txtdestinataire.
+        /// Contrôle hidDestinataire.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtdestinataire;
+        protected global::System.Web.UI.WebControls.HiddenField hidDestinataire;
 
         /// <summary>
-        /// Contrôle txthebergement.
+        /// Contrôle hidHebergement.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txthebergement;
+        protected global::System.Web.UI.WebControls.HiddenField hidHebergement;
 
         /// <summary>
-        /// Contrôle txtSujet.
+        /// Contrôle hidSujet.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSujet;
+        protected global::System.Web.UI.WebControls.HiddenField hidSujet;
 
         /// <summary>
         /// Contrôle txtmessage.
