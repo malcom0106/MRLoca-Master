@@ -16,9 +16,13 @@ namespace MRLoca
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DaoDataDDL daoDataDDL = new DaoDataDDL();
-            this.ddlType = Functions.GenerationDDL(this.ddlType, daoDataDDL.GetDataDDL("IdTypeHebergement", "NomHebergement", "TypeHebergement", null, null));
-            this.ddlType.DataBind();
+            if (!IsPostBack)
+            {
+                DaoDataDDL daoDataDDL = new DaoDataDDL();
+                this.ddlType = Functions.GenerationDDL(this.ddlType, daoDataDDL.GetDataDDL("IdTypeHebergement", "NomHebergement", "TypeHebergement", null, null));
+                this.ddlType.DataBind();
+            }
+            
         }
 
         protected void btnAjouter_Click(object sender, EventArgs e)
@@ -33,14 +37,31 @@ namespace MRLoca
                 if (this.fudPhoto.HasFile)
                 {
                     if (ValidationExtensions(this.fudPhoto.PostedFile.ContentType) && this.fudPhoto.PostedFile.ContentLength < 2500000)
-                    {                           
-                        Regex reg = new Regex("[*'\",_&#^@]");
-                        string filename = Convert.ToString(Utilisateur.IdClient) + reg.Replace(this.fudPhoto.FileName, string.Empty);
-                        string filenameComplete = Server.MapPath("~/Images/Upload/") + filename;
-                        this.fudPhoto.SaveAs(filenameComplete);
+                    {
+                        string nomhebergement = this.txtNom.Text;
+                        int idType = Convert.ToInt32(this.ddlType.SelectedValue);
+                        string description = this.txtDescription.Text;
+                        int IdClient = Utilisateur.IdClient;
+                        string prixdebase = (this.txtPrixDeBase.Text).Replace(".", ",");
+                        decimal prixDeBase = Convert.ToDecimal(prixdebase);
+                        string numero = this.TxtNumero.Text;
+                        string voie = this.txtVoie.Text;
+                        string codePostal = this.txtCodePostal.Text;
+                        string ville = this.txtVille.Text;
 
+                        Regex reg = new Regex(@"\W");
+                        string extension = (this.fudPhoto.FileName).Substring((this.fudPhoto.FileName).LastIndexOf(".") + 1);
+                        string nomficher = (Convert.ToString(Utilisateur.IdClient) +"_" + DateTime.Now.ToString() + this.fudPhoto.FileName).Trim();
+                        string nomPhoto = reg.Replace(nomficher, string.Empty)+"."+ extension;
+                        string FileNameComplete = Server.MapPath("~/Images/Upload/") + nomPhoto;
+                        DaoHebergement daoHebergement = new DaoHebergement();
+                        daoHebergement.InsertHebergement(nomhebergement, idType, description, IdClient, prixDeBase, numero, voie, codePostal, ville, nomPhoto);
+                        this.fudPhoto.SaveAs(FileNameComplete);
+                        Response.Redirect("BackendHebergements.aspx", false);
                         //Rechargement de l'objet image
                         //System.Drawing.Image image = System.Drawing.Image.FromFile(filenameComplete);
+
+
                     }
                     else
                     {

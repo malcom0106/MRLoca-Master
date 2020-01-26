@@ -237,18 +237,30 @@ namespace MRLoca.Dao
                 throw ex;
             }            
         }
-        public void InsertHebergement()
+        public void InsertHebergement(string NomHebergement, int IdType, string Description, int IdClient, decimal PrixDeBase, string Numero, string Voie, string CodePostal, string Ville, string NomPhoto)
         {
             try
             {
-                string sql = "";
-                SqlParameter[] sqlParameters = new SqlParameter[5];
-                //sqlParameters[0] = base.AddSqlParameter("@IdClient",IdClient);
+                string sql = "sp_InsertHebergement";
+
+                List<SqlParameter> sqlParameters = new List<SqlParameter>();
+                sqlParameters.Add(new SqlParameter("@NomHebergement", NomHebergement));
+                sqlParameters.Add(new SqlParameter("@IdType", IdType));
+                sqlParameters.Add(new SqlParameter("@Description", Description));
+                sqlParameters.Add(new SqlParameter("@IdClient", IdClient));
+                sqlParameters.Add(new SqlParameter("@PrixDeBase", PrixDeBase));
+                sqlParameters.Add(new SqlParameter("@Numero", Numero));
+                sqlParameters.Add(new SqlParameter("@Voie", Voie));
+                sqlParameters.Add(new SqlParameter("@CodePostal", CodePostal));
+                sqlParameters.Add(new SqlParameter("@Ville", Ville));
+                sqlParameters.Add(new SqlParameter("@NomPhoto", NomPhoto));
+
+                base.SetData(sql, sqlParameters);
 
             }
             catch(Exception ex)
             {
-
+                throw ex;
             }
         }
     }
