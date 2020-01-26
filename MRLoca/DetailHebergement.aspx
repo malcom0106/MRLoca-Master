@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DetailHebergement.aspx.cs" Inherits="MRLoca.DetailHebergement" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="row border rounded my-1 p-1 border-info col-12">
-        <asp:Image CssClass="img-fluid mx-auto d-block" ID="imgHebergement" runat="server" />
+    <div class="row rounded my-1 p-1 col-12">
+        <asp:Image CssClass="img-fluid mx-auto d-block rounded" ID="imgHebergement" runat="server" />
     </div>
     <div class="row my-1 p-0 col-12">
-        <div class="border border-info rounded col-9">
+        <div class="rounded col-9">
             <div>
                 <h5><asp:Label ID="lblTitre" runat="server" Text=""></asp:Label></h5>
             </div>
@@ -16,6 +16,26 @@
                 <h6>Adresse : </h6>
                 <asp:Label ID="lblAdresse" runat="server" Text=""></asp:Label>
             </div>
+            <asp:Panel ID="panAvis" CssClass="card" runat="server">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Voir les Avis :
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <asp:ListView ID="lvwAvis" runat="server">
+                        <ItemTemplate>
+                            <div class="card-body">
+                                <div>Note : <%# Eval("Note"); %></div>
+                                <div><%# Eval("Commentaire"); %></div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:ListView>
+                    
+                </div>
+            </asp:Panel>            
         </div>
         <div class="border rounded border-info col-3 py-auto ">
             <div class="col-12 text-center py-3">            
@@ -33,5 +53,6 @@
                 <asp:HyperLink CssClass="btn btn-warning btn-block" ID="lnkRetour" runat="server" NavigateUrl="ListHebergements.aspx">Retour</asp:HyperLink>
             </div>
         </div>
+
     </div>
 </asp:Content>

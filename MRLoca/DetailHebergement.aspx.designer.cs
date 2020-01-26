@@ -51,6 +51,24 @@ namespace MRLoca
         protected global::System.Web.UI.WebControls.Label lblAdresse;
 
         /// <summary>
+        /// Contrôle panAvis.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panAvis;
+
+        /// <summary>
+        /// Contrôle lvwAvis.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lvwAvis;
+
+        /// <summary>
         /// Contrôle lblPrix.
         /// </summary>
         /// <remarks>

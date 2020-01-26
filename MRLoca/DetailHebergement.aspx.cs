@@ -42,6 +42,20 @@ namespace MRLoca
                             this.lblPrix.Text = String.Format("{0:N2}", MaSelection.PrixDeBase);
                             this.btnFavori.CommandArgument = Convert.ToString(MaSelection.IdHebergement);
                             this.btnReserve.CommandArgument = Convert.ToString(MaSelection.IdHebergement);
+
+                            // AVIS 
+                            DaoAvis daoavis = new DaoAvis();
+                            List<Avis> listeAvis = daoavis.GetAvisHebergement(IdHebergement);
+                            if (listeAvis.Count() > 0)
+                            {
+                                this.panAvis.Visible = true;
+                                this.lvwAvis.DataSource = listeAvis;
+                                this.lvwAvis.DataBind();
+                            }
+                            else
+                            {
+                                this.panAvis.Visible = false;
+                            }
                         }
                         else
                         {

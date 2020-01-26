@@ -21,6 +21,7 @@
                     <div class="d-flex align-items-end flex-column bd-highlight mb-3">
                         <div class="p-2 bd-highlight">
                             <asp:LinkButton ID="lbtDetail" runat="server" CommandArgument='<%# Eval("IdHebergement") %>' OnClick="lbtDetail_Click"><%# Eval("Nom") %></asp:LinkButton>
+                            <asp:Literal ID="litNote" runat="server"></asp:Literal>
                         </div>
                         <div class="p-2 bd-highlight"><%# Eval("Description") %></div>
                         <div class="p-2 bd-highlight"><%# String.Format("{0:f2}", Eval("PrixDeBase"))%> Eur/Jour</div>                
