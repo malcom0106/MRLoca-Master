@@ -46,7 +46,7 @@ namespace MRLoca
                 int IdExpediteur = Utilisateur.IdClient;
                 int IdDestinataire = Convert.ToInt32(Request.QueryString["IdDestinataire"]);
                 DaoMessage daoMessage = new DaoMessage();
-                daoMessage.InsertMessage(IdExpediteur, IdDestinataire, Message);
+                daoMessage.InsertMessage(IdExpediteur, IdDestinataire, null, Message, 0);
                 Response.Redirect("BackendMessagerie.aspx");
             }
             catch (Exception ex)

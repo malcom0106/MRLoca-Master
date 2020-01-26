@@ -68,6 +68,7 @@ namespace MRLoca.Dao
                         string PrixTotal = Convert.ToString(base.sqlDataReader["PrixTotal"]);
                         bool Statut = Convert.ToBoolean(base.sqlDataReader["Statut"]);
                         int ModePaiement = Convert.ToInt32(base.sqlDataReader["IdPaiement"]);
+
                         Hebergement Location = new Hebergement();
                         Location.IdHebergement = Convert.ToInt32(base.sqlDataReader["IdHebergement"]);
                         Location.Nom = Convert.ToString(base.sqlDataReader["Nom"]);
@@ -75,7 +76,8 @@ namespace MRLoca.Dao
                         Location.Nom = Convert.ToString(base.sqlDataReader["Nom"]);
                         Location.Type = Convert.ToString(base.sqlDataReader["NomHebergement"]);
                         Location.Description = Convert.ToString(base.sqlDataReader["Description"]);
-
+                        DaoClient daoclient = new DaoClient();
+                        Location.Proprietaire = daoclient.GetUtilisateurId(Convert.ToInt32(base.sqlDataReader["IdProprietaire"]));
                         Commande maCommande = new Commande(IdReservation, Locataire, Location, DateDebut, DateFin, PrixTotal, Statut, ModePaiement);
                         ListeDesCommandes.Add(maCommande);
                     }

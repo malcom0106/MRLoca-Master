@@ -53,5 +53,10 @@ namespace MRLoca
         {
 
         }
+
+        protected void btnEnvoyer_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

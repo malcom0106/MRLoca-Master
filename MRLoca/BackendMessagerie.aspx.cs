@@ -35,8 +35,6 @@ namespace MRLoca
             {
                 ((backend)Page.Master).AddError(ex);
             }
-            
-            
         }
 
         protected void btn_tous_Click(object sender, EventArgs e)
@@ -121,39 +119,6 @@ namespace MRLoca
             
         }
 
-        protected void btnEnvoi_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Client Utilisateur = null;
-                if (Session["Client"] != null)
-                {
-                    Utilisateur = new Client();
-                    Utilisateur = (Client)Session["Client"];
-                }
-                int arg1 = Convert.ToInt32(((Button)sender).CommandArgument);
-                int arg2 = Convert.ToInt32(((Button)sender).CommandName);
-                if (arg1 == Utilisateur.IdClient)
-                {
-                    Response.Redirect("BackendNouveauMessage.aspx?idDestinataire=" + arg2);
-                }
-                else if (arg2 == Utilisateur.IdClient)
-                {
-                    Response.Redirect("BackendNouveauMessage.aspx?idDestinataire=" + arg1);
-                }
-                else
-                {
-                    Response.Redirect("BackendEspaceClient.aspx");
-                }
-            }
-            catch (Exception ex)
-            {
-                ((backend)Page.Master).AddError(ex);
-            }
-            
-
-        }
-
         protected void lvwMessage_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
         {
             Client Utilisateur = null;
@@ -169,6 +134,32 @@ namespace MRLoca
 
             this.lvwMessage.DataSource = ListeMessages;
             this.lvwMessage.DataBind();
+        }
+
+        protected void btnEnvoyer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string Message = this.txtmessage.Text;
+                string Sujet = this.txtSujet.Text;
+                int IdDestinataire = Convert.ToInt32(this.txtdestinataire.Text);
+                int IdHebergement = Convert.ToInt32(this.txthebergement.Text);
+                Client Utilisateur = null;                
+                if (Session["Client"] != null)
+                {
+                    Utilisateur = (Client)Session["Client"];
+                }
+                int IdExpediteur = Utilisateur.IdClient;
+
+
+                DaoMessage daoMessage = new DaoMessage();
+                daoMessage.InsertMessage(IdExpediteur, IdDestinataire,Sujet, Message, IdHebergement);
+                Response.Redirect("BackendMessagerie.aspx",false);
+            }
+            catch (Exception ex)
+            {
+                ((backend)Page.Master).AddError(ex);
+            }
         }
     }
 }

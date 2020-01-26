@@ -33,15 +33,14 @@ namespace MRLoca.Dao
                     while (base.sqlDataReader.Read())
                     {
                         int IdMessagerie = Convert.ToInt32(base.sqlDataReader["IdMessagerie"]);
-                        int IdExpediteur = Convert.ToInt32(base.sqlDataReader["IdExpediteur"]); ;
-                        int IdDestinataire = Convert.ToInt32(base.sqlDataReader["IdDestinataire"]); ;
+                        int IdExpediteur = Convert.ToInt32(base.sqlDataReader["IdExpediteur"]);
+                        int IdDestinataire = Convert.ToInt32(base.sqlDataReader["IdDestinataire"]);
                         string LeMessage = Convert.ToString(base.sqlDataReader["Message"]);
                         DateTime DateMessage = Convert.ToDateTime(base.sqlDataReader["Date"]);
                         bool Statut = Convert.ToBoolean(base.sqlDataReader["Statut"]);
                         string sujet = Convert.ToString(base.sqlDataReader["Sujet"]);
 
                         Client Expediteur = new Client();
-                        Expediteur.IdClient = 0;
                         Expediteur.Nom = Convert.ToString(base.sqlDataReader["NomExpediteur"]);
                         Expediteur.Prenom = Convert.ToString(base.sqlDataReader["PrenomExpediteur"]);
                         Expediteur.Telephone = Convert.ToString(base.sqlDataReader["TelephoneExpediteur"]);
@@ -58,9 +57,15 @@ namespace MRLoca.Dao
                         Hebergement hebergement = new Hebergement();
                         hebergement.IdHebergement = Convert.ToInt32(base.sqlDataReader["IdHebergement"]);
                         hebergement.Nom = Convert.ToString(base.sqlDataReader["NomHebergement"]);
-                        hebergement.Photo = Convert.ToString(base.sqlDataReader["Photo"]);
-                        hebergement.Type = Convert.ToString(base.sqlDataReader["Type"]);
-
+                        if (Convert.ToString(base.sqlDataReader["Photo"]) !=null)
+                        {
+                            hebergement.Photo = Convert.ToString(base.sqlDataReader["Photo"]);
+                        }
+                        
+                        if (Convert.ToString(base.sqlDataReader["Type"]) != null)
+                        {
+                            hebergement.Type = Convert.ToString(base.sqlDataReader["Type"]);
+                        }   
                         Message monMessage = new Message(IdMessagerie, IdExpediteur, IdDestinataire, LeMessage, DateMessage, Statut, Expediteur, Destinataire, hebergement, sujet);
 
                         ListeMessages.Add(monMessage);
@@ -75,7 +80,7 @@ namespace MRLoca.Dao
             }
             
         }
-        public void InsertMessage(int idexpediteur, int iddestinataire, string message)
+        public void InsertMessage(int idexpediteur, int iddestinataire, string sujet, string message, int idHebergement)
         {
             try
             {
@@ -89,6 +94,8 @@ namespace MRLoca.Dao
                 sqlParameters.Add(new SqlParameter("@IdExpediteur", idexpediteur));
                 sqlParameters.Add(new SqlParameter("@IdDestinataire", iddestinataire));
                 sqlParameters.Add(new SqlParameter("@Message", message));
+                sqlParameters.Add(new SqlParameter("@Sujet", sujet));
+                sqlParameters.Add(new SqlParameter("@IdHebergement", idHebergement));
 
                 base.SetData(sql, sqlParameters);
                 sqlConnection.Close();

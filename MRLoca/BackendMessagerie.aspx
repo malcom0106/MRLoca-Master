@@ -40,28 +40,13 @@
                                         <p><%#Eval("LeMessage") %></p>
                                     </td>
                                     <td>
-                                        <asp:Button ID="btnEnvoi" CssClass="btn btn-primary col-12" runat="server" Text="Envoyé" CommandName='<%# Eval("IdExpediteur") %>' CommandArgument='<%# Eval("IdDestinataire") %>' OnClick="btnEnvoi_Click"/>
+                                        <button type="button" class="btn btn-primary" onclick="envoisMessage('<%#Eval("IdExpediteur") %>','<%#Eval("Sujet") %>','<%#Eval("Logement.IdHebergement") %>');" >Repondre</button>
                                     
                                     </td>
                                 </tr>
                             </ItemTemplate>
                         </asp:ListView>                        
                     </table>
-
-
-    <%--                <asp:GridView ID="gvwListeMessage" AutoGenerateColumns="false" runat="server" CssClass="table table-bordered table-stripped">
-                        <Columns>                        
-                            <asp:BoundField DataField="Expediteur.Nom" HeaderText="A: / De :"/>
-                            <asp:BoundField DataField="DateMessage" HeaderText="Date d'envoi"/>
-                            <asp:BoundField DataField="LeMessage" HeaderText="Message"/>                        
-                            <asp:TemplateField HeaderText="Action">
-                                <ItemTemplate>
-                                    <asp:Button ID="btnEnvoi" CssClass="btn btn-primary col-12" runat="server" Text="Envoyé" CommandName='<%# Eval("IdExpediteur") %>' CommandArgument='<%# Eval("IdDestinataire") %>' OnClick=""/>
-                                    <asp:Button ID="btnSupprime" CssClass="btn btn-danger col-12" runat="server" Text="Supprimé" CommandArgument='<%# Eval("IdMessagerie") %>' OnClick="" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                    </asp:GridView>--%>
                     <asp:DataPager ID="DataPager1" runat="server" PagedControlID="lvwMessage" PageSize="10">
                             <Fields>
                                 <asp:NumericPagerField NumericButtonCssClass="btn btn-secondary" CurrentPageLabelCssClass="btn btn-warning" />
@@ -70,4 +55,43 @@
                 </asp:Panel>
             </div>        
         </figure>
+
+    <div class="modal fade" id="ModalRepondre" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Repondre : </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body col-12 ">
+                  <asp:TextBox ID="txtdestinataire" runat="server" Visible=""></asp:TextBox>
+                  <asp:TextBox ID="txthebergement" runat="server" Visible=""></asp:TextBox>              
+                  <asp:TextBox CssClass="form-control col-12" ID="txtSujet" runat="server" Visible=""></asp:TextBox>
+
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Message:</label>
+                  <asp:TextBox CssClass="form-control col-12" ID="txtmessage" runat="server" TextMode="MultiLine" Rows="10"></asp:TextBox>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <asp:Button ID="btnEnvoyer" CssClass="btn btn-primary" runat="server" Text="Envoyer" OnClick="btnEnvoyer_Click"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+        function envoisMessage(dest,sujet,heb) {
+            $('#ModalRepondre').modal('show');
+            var txtsujet = '#<%=this.txtSujet.ClientID %>';            
+            var txtdes = '#<%=this.txtdestinataire.ClientID %>';
+            var txtheberg = '#<%=this.txthebergement.ClientID %>';
+            $(txtsujet).val(sujet);
+
+            $(txtdes).val(dest);
+            $(txtheberg).val(heb);
+        }
+    </script>
 </asp:Content>
