@@ -18,9 +18,9 @@
                             <div id="btns" class="mt-auto p-2 bd-highlight">                            
                             </div>
                         </div>
-                        <div class="col-12 text-center">
+                       <%-- <div class="col-12 text-center">
                             <asp:Button ID="btnEdit" runat="server" Text="Modifier" CommandArgument='<%# Eval("IdHebergement") %>' CssClass="btn btn-secondary" OnClick="btnEdit_Click"/>
-                        </div>
+                        </div>--%>
                     </div>                    
                 </div>                               
         </ItemTemplate>

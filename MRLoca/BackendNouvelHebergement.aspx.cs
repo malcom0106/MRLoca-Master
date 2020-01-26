@@ -58,9 +58,6 @@ namespace MRLoca
                         daoHebergement.InsertHebergement(nomhebergement, idType, description, IdClient, prixDeBase, numero, voie, codePostal, ville, nomPhoto);
                         this.fudPhoto.SaveAs(FileNameComplete);
                         Response.Redirect("BackendHebergements.aspx", false);
-                        //Rechargement de l'objet image
-                        //System.Drawing.Image image = System.Drawing.Image.FromFile(filenameComplete);
-
 
                     }
                     else
