@@ -23,7 +23,7 @@
                             <div class="text-center">
                                 <asp:Button ID="btnAnnuler" CssClass="btn btn-danger" CommandArgument='<%# Eval("IdReservation") %>' runat="server" Text="Annuler" />
                                 <button type="button" class="btn btn-primary" onclick="envoisMessage('<%#Eval("Location.Proprietaire.IdClient") %>','','<%#Eval("Location.IdHebergement") %>');" >Contacter Bailleur</button>
-                                <button type="button" class="btn btn-warning" onclick="envoisAvis('<%#Eval("Location.Proprietaire.IdClient") %>','','<%#Eval("Location.IdHebergement") %>');" >Ajouter Avis</button>
+                                <button type="button" class="btn btn-warning" onclick="envoisAvis('<%#Eval("Location.IdHebergement") %>');" >Ajouter Avis</button>
                                 
                             </div>
                         </div>    
@@ -76,7 +76,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="LabelAvis">Repondre : </h5>
+            <h5 class="modal-title" id="LabelAvis">Laisser un avis : </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -112,9 +112,7 @@
 
         function envoisAvis(heb) {
             $('#ModalAvis').modal('show');
-            
             var txtheberg = '#<%=this.hidHebergementAvis.ClientID %>';
-            $(txtdes).val(dest);
             $(txtheberg).val(heb);
         }
     </script>

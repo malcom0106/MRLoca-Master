@@ -29,7 +29,7 @@ namespace MRLoca
                 }
                 else
                 {
-                    this.pnlModal.Visible = true;
+                    this.pnlModalMessage.Visible = true;
                 }
             }
             catch (Exception ex) 

@@ -177,11 +177,11 @@ namespace MRLoca
             {
                 int Id = Convert.ToInt32(((LinkButton)sender).CommandArgument);
                 Session["IdHebergement"] = Id;
-                Response.Redirect("DetailHebergement.aspx");
+                Response.Redirect("DetailHebergement.aspx",false);
             }
             catch (Exception ex)
             {
-                ((SiteMaster)Page.Master).AddError(ex);
+                Functions.AddError(ex);
             }            
         }
 
