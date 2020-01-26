@@ -38,22 +38,7 @@ namespace MRLoca
             }
             
         }
-
-        protected void btnContact_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnAnnuler_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnAvis_Click(object sender, EventArgs e)
-        {
-
-        }
-
+               
         protected void btnEnvoyer_Click(object sender, EventArgs e)
         {
             try
@@ -62,7 +47,7 @@ namespace MRLoca
                 string Message = this.txtmessage.Text;
                 string Sujet = this.txtSujet.Text;
                 int IdDestinataire = Convert.ToInt32(this.hidDestinataire.Value);
-                int IdHebergement = Convert.ToInt32(this.hidHebergement.Value);
+                int IdHebergement = Convert.ToInt32(this.hidHebergementMessage.Value);
                 Client Utilisateur = null;
                 if (Session["Client"] != null)
                 {
@@ -79,6 +64,32 @@ namespace MRLoca
             {
                 ((backend)Page.Master).AddError(ex);
             }
+        }
+
+        protected void btnAvis_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Recuperation des variables.
+                string Avis = this.txtAvis.Text;
+                int Note = Convert.ToInt32(this.txtNote.Text);
+                int IdHebergement = Convert.ToInt32(this.hidHebergementAvis.Value);
+                Client Utilisateur = null;
+                if (Session["Client"] != null)
+                {
+                    Utilisateur = (Client)Session["Client"];
+                }
+                int IdClient = Utilisateur.IdClient;
+                // Variables stockées en BDD
+                DaoAvis daoAvis = new DaoAvis();
+                daoAvis.InsertAvisHebergement(IdClient, IdHebergement, Note, Avis);
+                Response.Redirect("BackendCommandes.aspx", false);
+            }
+            catch(Exception ex)
+            {
+                ((backend)Page.Master).AddError(ex);
+            }
+
         }
     }
 }
