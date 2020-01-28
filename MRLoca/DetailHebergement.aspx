@@ -23,7 +23,7 @@
                 </p>                
                 <h6>
                     <a class="btn btn-primary" data-toggle="collapse" href="#collapseAvis" role="button" aria-expanded="false" aria-controls="collapseAvis">
-                        Voir les Avis <span class="badge badge-light"><asp:Literal ID="litNbreAvis" runat="server"></asp:Literal></span> :
+                        Voir <asp:Literal ID="litNbreAvis" runat="server"></asp:Literal> Avis :
                     </a>
                 </h6>
                 <div class="collapse" id="collapseAvis">                

@@ -37,7 +37,7 @@ namespace MRLoca
                             Adresse AdresseLgt = MaSelection.Adresse;
                             if (AdresseLgt != null)
                             {
-                                this.lblAdresse.Text = AdresseLgt.Numero + " " + AdresseLgt.Voie + "<br />" + AdresseLgt.CodePostal + " " + AdresseLgt.Ville;
+                                this.lblAdresse.Text = AdresseLgt.CodePostal + " " + AdresseLgt.Ville;
                             }
                             this.lblPrix.Text = String.Format("{0:N2}", MaSelection.PrixDeBase);
                             this.btnFavori.CommandArgument = Convert.ToString(MaSelection.IdHebergement);

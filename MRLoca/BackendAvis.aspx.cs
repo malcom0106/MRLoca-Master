@@ -14,6 +14,7 @@ namespace MRLoca
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             this.litAvis.Text = GenerationAvis();
         }
         private string GenerationAvis()

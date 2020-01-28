@@ -141,6 +141,7 @@
     <Content Include="Images\fond-opacite.png" />
     <Content Include="Images\fond-page-default.jpg" />
     <Content Include="Images\fondBackEnd-opacite.jpg" />
+    <Content Include="Images\logo-petit.jpg" />
     <Content Include="Images\Upload\h10p1.jpg" />
     <Content Include="Images\Upload\h11p1.jpg" />
     <Content Include="Images\Upload\h12p1.jpg" />
@@ -152,7 +153,6 @@
     <Content Include="Images\Upload\h18p1.jpg" />
     <Content Include="Images\Upload\h19p1.jpg" />
     <Content Include="Images\Upload\h1p1.jpg" />
-    <Content Include="Images\Upload\h20p1.jpg" />
     <Content Include="Images\Upload\h2p1.jpg" />
     <Content Include="Images\Upload\h3p1.jpg" />
     <Content Include="Images\Upload\h4p1.jpg" />
@@ -161,7 +161,6 @@
     <Content Include="Images\Upload\h7p1.jpg" />
     <Content Include="Images\Upload\h8p1.jpg" />
     <Content Include="Images\Upload\h9p1.jpg" />
-    <Content Include="Images\logo-petit.jpg" />
     <Content Include="ListHebergements.aspx" />
     <Content Include="Paiement.aspx" />
     <Content Include="Reservations.aspx" />
