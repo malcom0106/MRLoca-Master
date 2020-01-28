@@ -117,6 +117,7 @@
     <Content Include="BackendHebergements.aspx" />
     <Content Include="BackendMesAdresses.aspx" />
     <Content Include="BackendMessagerie.aspx" />
+    <Content Include="BackendMessagerie2.aspx" />
     <Content Include="BackendNouveauMessage.aspx" />
     <Content Include="BackendNouvelHebergement.aspx" />
     <Content Include="BackendNouvelleAdresse.aspx" />
@@ -374,6 +375,13 @@
     </Compile>
     <Compile Include="BackendMessagerie.aspx.designer.cs">
       <DependentUpon>BackendMessagerie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackendMessagerie2.aspx.cs">
+      <DependentUpon>BackendMessagerie2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackendMessagerie2.aspx.designer.cs">
+      <DependentUpon>BackendMessagerie2.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackendNouveauMessage.aspx.cs">
       <DependentUpon>BackendNouveauMessage.aspx</DependentUpon>

@@ -2,58 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
         <h3>Espace Client<em class="lead"> - Messagerie</em></h3>
         <figure class="figure bg-white py-2 col-12 border shadow my-3 bg-white rounded">
-            <div class="row col-12">
-                <div class="col-2">
-                    <div class="col-12">
-                        <asp:Button ID="btn_tous" CssClass="btn btn-secondary col-12" runat="server" Text="Tous" OnClick="btn_tous_Click"/>
-                    </div>
-                    <div class="col-12">
-                        <asp:Button ID="btn_recus" CssClass="btn btn-secondary col-12" runat="server" Text="Reçus" OnClick="btn_recus_Click"/>
-                    </div>
-                    <div class="col-12">
-                        <asp:Button ID="btn_envoyes" CssClass="btn btn-secondary col-12" runat="server" Text="Envoyés" OnClick="btn_envoyes_Click"/>
-                    </div>
-                </div>
-                <asp:Panel ID="panListeMessage" runat="server" CssClass="col-10">
-                    <asp:Literal ID="litMessage" runat="server"></asp:Literal>
-
-                    <%--Mes Messages--%>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Exp.</th>
-                                <th>Dest.</th>
-                                <th>Date</th>
-                                <th>Message</th>
-                                <th></th>
-                            </tr>
-                        </thead>                
-                        <asp:ListView ID="lvwMessage" runat="server" OnPagePropertiesChanging="lvwMessage_PagePropertiesChanging">
-                            <ItemTemplate>
-                                <tr>
-                                    <td><%#Eval("Expediteur.Nom") %></td>
-                                    <td><%#Eval("Destinataire.Nom") %></td>
-                                    <td><%#Eval("DateMessage") %></td>
-                                    <td>
-                                        <p><em><%#Eval("Sujet") %></em></p>
-                                        <p><strong><%#Eval("Logement.Nom") %></strong> </p>
-                                        <p><%#Eval("LeMessage") %></p>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary" onclick="envoisMessage('<%#Eval("IdExpediteur") %>','<%#Eval("Sujet") %>','<%#Eval("Logement.IdHebergement") %>');" >Repondre</button>
-                                    
-                                    </td>
-                                </tr>
-                            </ItemTemplate>
-                        </asp:ListView>                        
-                    </table>
-                    <asp:DataPager ID="DataPager1" runat="server" PagedControlID="lvwMessage" PageSize="10">
-                            <Fields>
-                                <asp:NumericPagerField NumericButtonCssClass="btn btn-secondary" CurrentPageLabelCssClass="btn btn-warning" />
-                            </Fields>
-                        </asp:DataPager>
-                </asp:Panel>
-            </div>        
+            <asp:Literal ID="MaMessagerie" runat="server"></asp:Literal>
         </figure>
 
     <div class="modal fade" id="ModalRepondre" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
