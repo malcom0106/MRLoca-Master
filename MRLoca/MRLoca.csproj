@@ -458,6 +458,7 @@
     <Compile Include="Entities\Hebergement.cs" />
     <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\Reservation.cs" />
+    <Compile Include="Entities\SujetMessagerie.cs" />
     <Compile Include="Exemple_connection.aspx.cs">
       <DependentUpon>Exemple_connection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
