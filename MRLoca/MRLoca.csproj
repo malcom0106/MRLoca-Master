@@ -117,7 +117,6 @@
     <Content Include="BackendHebergements.aspx" />
     <Content Include="BackendMesAdresses.aspx" />
     <Content Include="BackendMessagerie.aspx" />
-    <Content Include="BackendMessagerie2.aspx" />
     <Content Include="BackendNouveauMessage.aspx" />
     <Content Include="BackendNouvelHebergement.aspx" />
     <Content Include="BackendNouvelleAdresse.aspx" />
@@ -376,13 +375,6 @@
     <Compile Include="BackendMessagerie.aspx.designer.cs">
       <DependentUpon>BackendMessagerie.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BackendMessagerie2.aspx.cs">
-      <DependentUpon>BackendMessagerie2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BackendMessagerie2.aspx.designer.cs">
-      <DependentUpon>BackendMessagerie2.aspx</DependentUpon>
-    </Compile>
     <Compile Include="BackendNouveauMessage.aspx.cs">
       <DependentUpon>BackendNouveauMessage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -458,7 +450,6 @@
     <Compile Include="Entities\Hebergement.cs" />
     <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\Reservation.cs" />
-    <Compile Include="Entities\SujetMessagerie.cs" />
     <Compile Include="Exemple_connection.aspx.cs">
       <DependentUpon>Exemple_connection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
