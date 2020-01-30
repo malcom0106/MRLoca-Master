@@ -35,7 +35,7 @@
             </div>
         </ItemTemplate>
     </asp:ListView>
-    <asp:DataPager ID="DataPager1" runat="server" PagedControlID="lsvHebergement" PageSize="5">
+    <asp:DataPager ID="DataPager1" runat="server" PagedControlID="lsvHebergement" PageSize="6">
         <Fields>
             <asp:NumericPagerField NumericButtonCssClass="btn btn-secondary" CurrentPageLabelCssClass="btn btn-warning"/>
         </Fields>

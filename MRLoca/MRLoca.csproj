@@ -189,6 +189,7 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="backend.Master" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FTP-MRLOCA-IKOULA.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

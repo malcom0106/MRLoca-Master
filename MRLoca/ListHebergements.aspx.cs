@@ -54,7 +54,8 @@ namespace MRLoca
                         else
                         {
                             this.litTitre.Text = @"Liste des Hebergements";
-                            this.lsvHebergement.DataSource = Session["ListeHebergement"];
+                            List<Hebergement> ListeHebergement = (List<Hebergement>)Session["ListeHebergement"];
+                            this.lsvHebergement.DataSource = ListeHebergement;
                             this.lsvHebergement.DataBind();
                         }
 
@@ -82,7 +83,7 @@ namespace MRLoca
             }
             catch (Exception ex)
             {
-                ((SiteMaster)Page.Master).AddError(ex);
+                throw ex;
             }
             
             return herb;
