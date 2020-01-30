@@ -87,7 +87,7 @@ namespace MRLoca.Dao
 
                 //Creation d'un parametre SQL et ajout dans le tableau precedemment créé
                 sqlParameters.Add(new SqlParameter("@IdHebergement", IdHebergement));
-                sqlParameters.Add(new SqlParameter("@IdClient", IdClient));
+                sqlParameters.Add(new SqlParameter("@Client", IdClient));
 
                 base.SetData(sql, sqlParameters);
                 base.sqlConnection.Close();

@@ -49,7 +49,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body"><img src="" id="imgModal"/></div>
+          <div class="modal-body"><img src="#" id="imgModal"/></div>
         </div>
       </div>
     </div>  

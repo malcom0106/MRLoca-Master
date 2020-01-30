@@ -18,12 +18,14 @@ namespace MRLoca.Dao
         {
             try
             {
-                List<SqlParameter> sqlParameters = new List<SqlParameter>();
-                sqlParameters.Add(new SqlParameter("@nom", nom));
-                sqlParameters.Add(new SqlParameter("@numero", numero));
-                sqlParameters.Add(new SqlParameter("@voie", voie));
-                sqlParameters.Add(new SqlParameter("@codepostal", codepostal));
-                sqlParameters.Add(new SqlParameter("@ville", ville));
+                List<SqlParameter> sqlParameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@nom", nom),
+                    new SqlParameter("@numero", numero),
+                    new SqlParameter("@voie", voie),
+                    new SqlParameter("@codepostal", codepostal),
+                    new SqlParameter("@ville", ville)
+                };
 
                 string sql = "sp_setAdresse";
                 //Execution de GetDataReader Erité de DataAccess
@@ -51,8 +53,10 @@ namespace MRLoca.Dao
         {
             try
             {
-                List<SqlParameter> sqlParameters = new List<SqlParameter>();
-                sqlParameters.Add(new SqlParameter("@IdClient", IdClient));
+                List<SqlParameter> sqlParameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@IdClient", IdClient)
+                };
                 string sql = "sp_GetAdressesClient";
                 List<Adresse> ListeAdresse = null;
                 //Execution de GetDataReader Erité de DataAccess
@@ -62,13 +66,15 @@ namespace MRLoca.Dao
                     ListeAdresse = new List<Adresse>();
                     while (base.sqlDataReader.Read())
                     {
-                        Adresse adresse = new Adresse();
-                        adresse.IdAdresse = Convert.ToInt32(base.sqlDataReader["IdAdresse"]);
-                        adresse.Nom = Convert.ToString(base.sqlDataReader["Nom"]);
-                        adresse.Numero = Convert.ToString(base.sqlDataReader["Numero"]);
-                        adresse.Voie = Convert.ToString(base.sqlDataReader["Voie"]);
-                        adresse.CodePostal = Convert.ToString(base.sqlDataReader["CodePostal"]);
-                        adresse.Ville = Convert.ToString(base.sqlDataReader["Ville"]);
+                        Adresse adresse = new Adresse
+                        {
+                            IdAdresse = Convert.ToInt32(base.sqlDataReader["IdAdresse"]),
+                            Nom = Convert.ToString(base.sqlDataReader["Nom"]),
+                            Numero = Convert.ToString(base.sqlDataReader["Numero"]),
+                            Voie = Convert.ToString(base.sqlDataReader["Voie"]),
+                            CodePostal = Convert.ToString(base.sqlDataReader["CodePostal"]),
+                            Ville = Convert.ToString(base.sqlDataReader["Ville"])
+                        };
                         ListeAdresse.Add(adresse);
                     }
                 }
@@ -88,10 +94,11 @@ namespace MRLoca.Dao
         {
             try
             {
-                List<SqlParameter> sqlParameters = new List<SqlParameter>();
-                sqlParameters.Add(new SqlParameter("@IdAdresse", IdAdresse));
+                List<SqlParameter> sqlParameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@IdAdresse", IdAdresse)
+                };
                 string sql = "sp_GetAdresse";
-                List<Adresse> ListeAdresse = null;
                 //Execution de GetDataReader Erité de DataAccess
                 base.GetDataReader(sql, sqlParameters) ;
                 Adresse adresse = null;
@@ -99,13 +106,15 @@ namespace MRLoca.Dao
                 {
                     while (base.sqlDataReader.Read())
                     {
-                        adresse = new Adresse();
-                        adresse.IdAdresse = Convert.ToInt32(base.sqlDataReader["IdAdresse"]);
-                        adresse.Nom = Convert.ToString(base.sqlDataReader["Nom"]);
-                        adresse.Numero = Convert.ToString(base.sqlDataReader["Numero"]);
-                        adresse.Voie = Convert.ToString(base.sqlDataReader["Voie"]);
-                        adresse.CodePostal = Convert.ToString(base.sqlDataReader["CodePostal"]);
-                        adresse.Ville = Convert.ToString(base.sqlDataReader["Ville"]);
+                        adresse = new Adresse
+                        {
+                            IdAdresse = Convert.ToInt32(base.sqlDataReader["IdAdresse"]),
+                            Nom = Convert.ToString(base.sqlDataReader["Nom"]),
+                            Numero = Convert.ToString(base.sqlDataReader["Numero"]),
+                            Voie = Convert.ToString(base.sqlDataReader["Voie"]),
+                            CodePostal = Convert.ToString(base.sqlDataReader["CodePostal"]),
+                            Ville = Convert.ToString(base.sqlDataReader["Ville"])
+                        };
                     }
                 }
                 return adresse;
@@ -131,8 +140,10 @@ namespace MRLoca.Dao
             try
             {                
                 string sql = "sp_DelAdresse";
-                List<SqlParameter> sqlParameters = new List<SqlParameter>();
-                sqlParameters.Add(new SqlParameter("@IdAdresse", IdAdresse));
+                List<SqlParameter> sqlParameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@IdAdresse", IdAdresse)
+                };
                 base.SetData(sql, sqlParameters);                
                 base.sqlConnection.Close();
             } catch (Exception ex)
@@ -149,14 +160,16 @@ namespace MRLoca.Dao
         {
             try
             {
-                string sql = "sp_UpdateAdresse"; 
-                List<SqlParameter> sqlParameters = new List<SqlParameter>();
-                sqlParameters.Add(new SqlParameter("@IdAdresse", idAdresse));
-                sqlParameters.Add(new SqlParameter("@NomAdresse", nom));
-                sqlParameters.Add(new SqlParameter("@Numero", numero));
-                sqlParameters.Add(new SqlParameter("@Voie", voie));
-                sqlParameters.Add(new SqlParameter("@CodePostal", codePostal));
-                sqlParameters.Add(new SqlParameter("@Ville", ville));
+                string sql = "sp_UpdateAdresse";
+                List<SqlParameter> sqlParameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@IdAdresse", idAdresse),
+                    new SqlParameter("@NomAdresse", nom),
+                    new SqlParameter("@Numero", numero),
+                    new SqlParameter("@Voie", voie),
+                    new SqlParameter("@CodePostal", codePostal),
+                    new SqlParameter("@Ville", ville)
+                };
                 base.SetData(sql, sqlParameters);
             } catch (Exception ex)
             {
@@ -174,13 +187,15 @@ namespace MRLoca.Dao
             try
             {
                 string sql = "sp_InsertAdresse";
-                List<SqlParameter> sqlParameters = new List<SqlParameter>();
-                sqlParameters.Add(new SqlParameter("@IdClient", IdClient));
-                sqlParameters.Add(new SqlParameter("@NomAdresse", nom));
-                sqlParameters.Add(new SqlParameter("@Numero", numero));
-                sqlParameters.Add(new SqlParameter("@Voie", voie));
-                sqlParameters.Add(new SqlParameter("@CodePostal", codePostal));
-                sqlParameters.Add(new SqlParameter("@Ville", ville));
+                List<SqlParameter> sqlParameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@IdClient", IdClient),
+                    new SqlParameter("@NomAdresse", nom),
+                    new SqlParameter("@Numero", numero),
+                    new SqlParameter("@Voie", voie),
+                    new SqlParameter("@CodePostal", codePostal),
+                    new SqlParameter("@Ville", ville)
+                };
 
                 base.SetData(sql, sqlParameters);
             } 
