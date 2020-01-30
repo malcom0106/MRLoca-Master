@@ -190,15 +190,12 @@ namespace MRLoca.Dao
                     hebergement.Photo = Constants.CheminPhoto + base.sqlDataReader["NomPhoto"].ToString();
                 }
 
-                hebergement.Type = base.sqlDataReader["NomHebergement"].ToString();
-
+                hebergement.Type = base.sqlDataReader["NomHebergement"].ToString();  
                 
                 if (base.sqlDataReader["IdClient"].ToString() != null && base.sqlDataReader["IdClient"].ToString() != "")
                 {
                     hebergement.IdClient = Convert.ToInt32(base.sqlDataReader["IdClient"]);
                 }
-
-
                 hebergement.PrixDeBase = Convert.ToDecimal(base.sqlDataReader["PrixDeBase"]);
 
                 if(Convert.ToString(base.sqlDataReader["IdAdresse"]) != "" && Convert.ToString(base.sqlDataReader["NomAdresse"]) != "")

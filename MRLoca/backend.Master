@@ -59,7 +59,7 @@
                     </li>
                 </ul>
                 <span class="navbar-text">
-                    <asp:Label ID="lblClient" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="lblClient" CssClass="mr-3" runat="server" Text=""></asp:Label>
                 </span>
                 <span class="navbar-text">                    
                     <asp:HyperLink CssClass="btn btn-outline-danger" ID="lnkConnect" runat="server" NavigateUrl="~/Reservations.aspx"><i class="fas fa-cart-arrow-down"></i></asp:HyperLink>
