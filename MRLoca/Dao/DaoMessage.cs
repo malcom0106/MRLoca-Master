@@ -69,6 +69,7 @@ namespace MRLoca.Dao
                         Message monMessage = new Message(IdMessagerie, IdExpediteur, IdDestinataire, LeMessage, DateMessage, Statut, Expediteur, Destinataire, hebergement, sujet);
 
                         ListeMessages.Add(monMessage);
+
                     }
                 }
                 sqlConnection.Close();
