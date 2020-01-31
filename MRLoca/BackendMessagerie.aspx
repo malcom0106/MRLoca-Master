@@ -1,9 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/backend.Master" AutoEventWireup="true" CodeBehind="BackendMessagerie.aspx.cs" Inherits="MRLoca.BackendMessagerie" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
         <h3>Espace Client<em class="lead"> - Messagerie</em></h3>
-        <figure class="figure bg-white py-2 col-12 border shadow my-3 bg-white rounded">
-            <asp:Literal ID="MaMessagerie" runat="server"></asp:Literal>
-        </figure>
+
+            <figure class="figure bg-white py-2 col-12 border shadow my-3 bg-white rounded">
+                <asp:Literal ID="MaMessagerie" runat="server"></asp:Literal>
+            </figure>
+
+       
 
     <div class="modal fade" id="ModalRepondre" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">

@@ -46,7 +46,7 @@ namespace MRLoca
                         }
 
                         MaMessagerie.Append("<div id=\"messagerie\" class=\"row col-12\">");
-                        MaMessagerie.Append("<div class=\"col-3\">");
+                        MaMessagerie.Append("<div class=\"col-12 col-md-3 my-2\">");
                         MaMessagerie.Append("<ul class=\"list-group\">");
                         int numerotationHebergement = 1;
                         List<int> ClientIdMessagerie = new List<int>();
@@ -83,7 +83,7 @@ namespace MRLoca
 
                             DaoHebergement daoHebergement = new DaoHebergement();
                             Hebergement MonHebergement = daoHebergement.GetHebergement(Hebergement);
-                            MaMessagerie.Append("<div class=\"col-9 collapse cart\" id=\"collapse" + numerotationsujet2 + "\">");
+                            MaMessagerie.Append("<div class=\"col-12 col-md-9 my-2 collapse cart\" id=\"collapse" + numerotationsujet2 + "\">");
                             MaMessagerie.Append("<div class=\"card-header\">" + MonHebergement.Nom + "</div>");
                             List<Message> ListeDeMesMessages = new List<Message>();
                             foreach (int c in ClientIdMessagerie)
@@ -108,16 +108,19 @@ namespace MRLoca
                                     if (message.IdExpediteur == Utilisateur.IdClient)
                                     {
                                         //Expediteur
-                                        MaMessagerie.Append("<div class=\"row justify-content-start my-1\"><div class=\"border border-light rounded bg-light col-10\">" + message.LeMessage + "</div></div>");
+                                        MaMessagerie.Append("<div class=\"row justify-content-start my-1\"><div class=\"border border-light rounded bg-light col-8\">" + message.LeMessage + "</div></div>");
                                     }
                                     else
                                     {
                                         //Destinataire
-                                        MaMessagerie.Append("<div class=\"row justify-content-end my-1\"><div class=\"border border-primary rounded bg-primary col-10\"><div>" + message.LeMessage + "</div><div>" + message.Expediteur.Nom + "</div></div></div>");
+                                        MaMessagerie.Append("<div class=\"row justify-content-end my-1\"><div class=\"border border-primary rounded bg-primary col-8\"><div>" + message.LeMessage + "</div><div>" + message.Expediteur.Nom + "</div></div></div>");
                                     }
                                 }
                                 MaMessagerie.Append("</div>");
-                                MaMessagerie.Append("<button type =\"button\" class=\"btn btn-primary\" onclick=\"envoisMessage('<%#Eval('expediteur', 'Sujet', 'IDHebergement'); \" >Repondre</button>");
+                                string IdExp = Convert.ToString(Utilisateur.IdClient);
+                                string sujet ="0";
+                                string idDest = Convert.ToString(c);
+                                MaMessagerie.Append("<button type =\"button\" class=\"btn btn-primary\" onclick=\"envoisMessage('"+ idDest + "' , '"+ sujet + "', '"+ Hebergement.ToString() + "'); \" >Repondre</button>");
                                 MaMessagerie.Append("</a></div>");                                
                             }
                             ClientIdMessagerie = null;
@@ -154,7 +157,7 @@ namespace MRLoca
 
                 DaoMessage daoMessage = new DaoMessage();
                 daoMessage.InsertMessage(IdExpediteur, IdDestinataire,Sujet, Message, IdHebergement);
-                Response.Redirect("BackendMessagerie.aspx",false);
+                Response.Redirect("BackendMessagerie.aspx");
             }
             catch (Exception ex)
             {

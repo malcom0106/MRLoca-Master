@@ -95,7 +95,7 @@ namespace MRLoca.Dao
                 sqlParameters.Add(new SqlParameter("@IdExpediteur", idexpediteur));
                 sqlParameters.Add(new SqlParameter("@IdDestinataire", iddestinataire));
                 sqlParameters.Add(new SqlParameter("@Message", message));
-                sqlParameters.Add(new SqlParameter("@Sujet", sujet));
+                //sqlParameters.Add(new SqlParameter("@Sujet", sujet));
                 sqlParameters.Add(new SqlParameter("@IdHebergement", idHebergement));
 
                 base.SetData(sql, sqlParameters);
