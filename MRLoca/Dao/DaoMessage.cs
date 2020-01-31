@@ -104,8 +104,7 @@ namespace MRLoca.Dao
             catch ( Exception ex)
             {
                 throw ex;
-            }
-            
+            }            
         }
     }
 }
