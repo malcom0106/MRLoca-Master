@@ -4,7 +4,7 @@
         <asp:Image CssClass="img-fluid mx-auto d-block rounded" ID="imgHebergement" runat="server" />
     </div>
     <div class="row my-1 p-0 col-12">
-        <div class="rounded col-9">
+        <div class="rounded col-md-9 col-12">
             <div>
                 <h5><asp:Label ID="lblTitre" runat="server" Text=""></asp:Label></h5>
             </div>
@@ -38,7 +38,7 @@
                 </div>
             </asp:Panel>            
         </div>
-        <div class="border rounded border-info col-3 py-auto ">
+        <div class="border rounded border-info col-md-3 col-12 py-auto ">
             <div class="col-12 text-center py-3">            
                 <p>
                     <strong><asp:Label ID="lblPrix" runat="server" Text=""></asp:Label></strong> Eur/jour
@@ -50,7 +50,7 @@
             <div class="col-12 pb-1">                
                 <asp:Button CssClass="btn btn-info btn-block" ID="btnReserve" runat="server" Text="Réservé" OnClick="btnReserve_Click" CommandArgument=""/>
             </div>
-            <div class="col-12">                
+            <div class="col-12 pb-1">                
                 <asp:HyperLink CssClass="btn btn-warning btn-block" ID="lnkRetour" runat="server" NavigateUrl="ListHebergements.aspx">Retour</asp:HyperLink>
             </div>
         </div>

@@ -137,7 +137,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Favoris.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="home.aspx" />
     <Content Include="Images\fond-opacite.png" />
     <Content Include="Images\fond-page-default.jpg" />
     <Content Include="Images\fondBackEnd-opacite.jpg" />
@@ -467,13 +466,6 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="home.aspx.cs">
-      <DependentUpon>home.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="home.aspx.designer.cs">
-      <DependentUpon>home.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListHebergements.aspx.cs">
       <DependentUpon>ListHebergements.aspx</DependentUpon>
