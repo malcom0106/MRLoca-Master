@@ -2,6 +2,7 @@
 using MRLoca.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -20,7 +21,9 @@ namespace MRLoca.Dao
         // Constructeur contenant la chaine de connection et l'objet pour ce connecter. 
         public DataAccess() 
         {
-             sqlConnection = new SqlConnection(Constants.StringConnection);            
+            //Get connection string from web.config file  
+            string strcon = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+            sqlConnection = new SqlConnection(strcon);            
         }
 
 
