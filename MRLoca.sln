@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRLoca", "MRLoca\MRLoca.csproj", "{8652CDAC-3CE6-4FD0-B000-0CE42E3211D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin-MRLoca", "..\..\Admin-MRLoca\Admin-MRLoca.csproj", "{F0BC17A5-8C06-4482-8FEE-718EFC45F1EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8652CDAC-3CE6-4FD0-B000-0CE42E3211D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8652CDAC-3CE6-4FD0-B000-0CE42E3211D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8652CDAC-3CE6-4FD0-B000-0CE42E3211D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0BC17A5-8C06-4482-8FEE-718EFC45F1EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0BC17A5-8C06-4482-8FEE-718EFC45F1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0BC17A5-8C06-4482-8FEE-718EFC45F1EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0BC17A5-8C06-4482-8FEE-718EFC45F1EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
